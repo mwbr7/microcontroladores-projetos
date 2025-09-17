@@ -4,4 +4,4 @@ Aqui você encontrará projetos e materiais relacionados a microcontroladores, d
 
 ## 📖 Manual do ESP32  
 Para facilitar os estudos, segue o link do manual oficial do ESP32:  
-[Documentação oficial do ESP32](https://www.espressif.com/en/support/download/documents)  
+[Documentação oficial do ESP32](https://www.espressif.com/en/support/documents/technical-documents)  
