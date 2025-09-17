@@ -1,6 +1,11 @@
 # Projetos de Microcontroladores  
 👋 Bem-vindo ao meu repositório!  
-Aqui você encontrará projetos e materiais relacionados a microcontroladores, desenvolvidos para aprendizado e prática.  
+Aqui você encontrará projetos e materiais relacionados a microcontroladores, desenvolvidos para aprendizado e prática.
+
+## 🚀 Projetos  
+- Projeto 1: Semáforo com ESP32  
+- Projeto 2: Automação residencial básica  
+- Projeto 3: Controle de acesso com RFID 
 
 ## 📖 Manual do ESP32  
 Para facilitar os estudos, segue o link do manual oficial do ESP32:  
@@ -8,8 +13,3 @@ Para facilitar os estudos, segue o link do manual oficial do ESP32:
 
 ## 🖼️ Padrão Internacional de Cores nos Resistores  
 ![ESP32](assets/cores-resistor.png)  
-
-## 🚀 Projetos  
-- Projeto 1: Semáforo com ESP32  
-- Projeto 2: Automação residencial básica  
-- Projeto 3: Controle de acesso com RFID  
