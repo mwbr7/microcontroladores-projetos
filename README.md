@@ -8,8 +8,8 @@ Aqui você encontrará projetos e materiais relacionados a microcontroladores, d
 - Projeto 3:  
 
 ## 📖 Manual do ESP32  
-Para facilitar os estudos, segue o link do manual oficial do ESP32:  
-[Manual do ESP utilizado nos projetos](https://github.com/mwbr7/microcontroladores-projetos/blob/main/assets/ESP32-Manual.pdf)  
+Para facilitar os estudos, segue o link do manual do ESP32 utilizado nos projetos:  
+[Manual do ESP](https://github.com/mwbr7/microcontroladores-projetos/blob/main/assets/ESP32-Manual.pdf)  
 
 ## Ω Padrão Internacional de Cores dos Resistores  
 ![ESP32](assets/cores-resistor.png)  
