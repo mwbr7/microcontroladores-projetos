@@ -11,5 +11,5 @@ Aqui você encontrará projetos e materiais relacionados a microcontroladores, d
 Para facilitar os estudos, segue o link do manual oficial do ESP32:  
 [Manual do ESP utilizado nos projetos](https://github.com/mwbr7/microcontroladores-projetos/blob/main/assets/ESP32-Manual.pdf)  
 
-## 🖼️ Padrão Internacional de Cores nos Resistores  
+## Ω Padrão Internacional de Cores dos Resistores  
 ![ESP32](assets/cores-resistor.png)  
