@@ -4,7 +4,7 @@ Aqui você encontrará projetos e materiais relacionados a microcontroladores, d
 
 ## 🚀 Projetos  
 - Projeto 1: [Controle de acesso utilizando ESP e RFID](https://github.com/mwbr7/microcontroladores-projetos/tree/main/projeto-controle-de-acesso)  
-- Projeto 2:   
+- Projeto 2: [Monitoramento de Piscina utilizando ESP32-CAM e OV2640](https://github.com/mwbr7/microcontroladores-projetos/tree/main/projeto-monitoramento-de-piscina)  
 - Projeto 3:  
 
 ## 📖 Manual do ESP32  
