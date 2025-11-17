@@ -38,8 +38,8 @@ Para a configuração do **ESP32-CAM**, você precisará do código necessário 
 Clone o repositório para sua máquina local:
 
 ```bash
-git clone https://github.com/seu-usuario/monitoramento-criancas-piscina.git
-cd monitoramento-criancas-piscina
+git clone https://github.com/mwbr7/microcontroladores-projetos
+cd microcontroladores-projetos/projeto-monitoramento-de-piscina/
 ```
 ### 2. Instalar Dependências
 ```bash
@@ -57,5 +57,6 @@ python monitoramento_criancas.py
 ```
 ### 5. Parar o Processo
 Para interromper o monitoramento, pressione q na janela de vídeo ou interrompa a execução do código no terminal (Ctrl + C).
+
 
 
