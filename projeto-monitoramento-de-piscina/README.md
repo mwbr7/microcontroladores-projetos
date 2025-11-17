@@ -29,9 +29,7 @@ Para rodar o projeto, você precisará dos seguintes componentes:
 
 Para a configuração do **ESP32-CAM**, você precisará do código necessário para capturar o stream de vídeo. Você pode baixar a biblioteca e o código de configuração do ESP32-CAM através do seguinte link:
 
-[**Biblioteca ESP32-CAM para Stream de Vídeo**](https://github.com/mwbr7/microcontroladores-projetos/blob/main/projeto-monitoramento-de-piscina/02_Bibliotecas%20Utilizadas/esp32cam/esp32cam-main.zip)
-
----
+[**Baixar ESP32-CAM - Código**](https://github.com/mwbr7/microcontroladores-projetos/raw/main/projeto-monitoramento-de-piscina/02_Bibliotecas%20Utilizadas/esp32cam/esp32cam-main.zip)
 
 ## 🛠️ Como Rodar
 
@@ -59,4 +57,5 @@ python monitoramento_criancas.py
 ```
 ### 5. Parar o Processo
 Para interromper o monitoramento, pressione q na janela de vídeo ou interrompa a execução do código no terminal (Ctrl + C).
+
 
