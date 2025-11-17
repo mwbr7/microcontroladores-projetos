@@ -82,7 +82,7 @@ while True:
                     try:
                         requests.get(ESP32_ALERT, timeout=0.2)
                         last_alert_time = time.time()
-                        print(f"🔔 ALERTA: pouca altura ({height_pixels} px)")
+                        print(f"ALERTA: pouca altura ({height_pixels} px)")
                     except requests.RequestException:
                         pass
 
