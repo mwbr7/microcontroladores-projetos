@@ -34,3 +34,20 @@ Clone o repositório para sua máquina local:
 ```bash
 git clone https://github.com/seu-usuario/monitoramento-criancas-piscina.git
 cd monitoramento-criancas-piscina
+```
+### 2. Instalar Dependências
+```bash
+pip install requests opencv-python numpy mediapipe
+```
+
+### 3. Configurar o ESP32 
+Certifique-se de que o ESP32-CAM esteja configurado para transmitir vídeo via HTTP. O código espera que o stream esteja disponível na seguinte URL (substitua pelo IP correto do seu ESP32):
+```bash
+http://192.168.X.X/
+```
+### 4. Rodar o Código
+```bash
+python monitoramento_criancas.py
+```
+### 5. Parar o Processo
+Para interromper o monitoramento, pressione q na janela de vídeo ou interrompa a execução do código no terminal (Ctrl + C).
