@@ -8,8 +8,8 @@
 #include "soc/rtc_cntl_reg.h"  
 #include "esp_http_server.h"
 
-const char* ssid = "*********";
-const char* password = "*********";
+const char* ssid = "*********";         // Nome da rede Wi-Fi
+const char* password = "*********";     // senha da rede Wi-Fi
 
 #define PWDN_GPIO_NUM     32
 #define RESET_GPIO_NUM    -1
@@ -36,23 +36,26 @@ static const char* _STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %
 httpd_handle_t stream_httpd = NULL;
 httpd_handle_t alert_httpd = NULL;
 
-#define ALERT_LED_PIN 2
+#define BUZZER_PIN 13 
 
+// ===================================================================
+// HANDLER DE ALERTA (buzzer)
+// ===================================================================
 static esp_err_t alert_handler(httpd_req_t *req) {
   Serial.println("Alerta recebido! Pessoa detectada.");
 
-  // Aciona o LED como sinal de alerta
-  digitalWrite(ALERT_LED_PIN, HIGH);  // Acende o LED
-  delay(1000);  // Aguarda 1 segundo
-  digitalWrite(ALERT_LED_PIN, LOW);   // Apaga o LED
+  digitalWrite(BUZZER_PIN, HIGH);
+  delay(1000);
+  digitalWrite(BUZZER_PIN, LOW);
 
-  // Responde ao pedido com uma mensagem
   const char* response = "Alerta recebido!";
   httpd_resp_send(req, response, strlen(response));
   return ESP_OK;
 }
 
-// Função para enviar o fluxo de vídeo da câmera
+// ===================================================================
+// STREAM DE VÍDEO
+// ===================================================================
 static esp_err_t stream_handler(httpd_req_t *req) {
   camera_fb_t * fb = NULL;
   esp_err_t res = ESP_OK;
@@ -71,7 +74,6 @@ static esp_err_t stream_handler(httpd_req_t *req) {
       Serial.println("Camera capture failed");
       res = ESP_FAIL;
     } else {
-      // Se a captura não for em JPEG, converte
       if(fb->format != PIXFORMAT_JPEG){
         bool jpeg_converted = frame2jpg(fb, 80, &_jpg_buf, &_jpg_buf_len);
         esp_camera_fb_return(fb);
@@ -110,12 +112,13 @@ static esp_err_t stream_handler(httpd_req_t *req) {
   return res;
 }
 
-// Função para iniciar o servidor de câmera e o servidor de alerta
+// ===================================================================
+// SERVIDOR DA CÂMERA E DO ALERTA
+// ===================================================================
 void startCameraServer() {
-  // --- Servidor do STREAM ---
   httpd_config_t config = HTTPD_DEFAULT_CONFIG();
   config.server_port = 80;
-  config.ctrl_port = 32768;   // evita conflito interno
+  config.ctrl_port = 32768;   
 
   if (httpd_start(&stream_httpd, &config) == ESP_OK) {
       httpd_uri_t index_uri = {
@@ -127,11 +130,10 @@ void startCameraServer() {
       httpd_register_uri_handler(stream_httpd, &index_uri);
   }
 
-  // --- Servidor do ALERTA ---
   httpd_config_t config2 = HTTPD_DEFAULT_CONFIG();
   config2.server_port = 81;
-  config2.ctrl_port = 32769;  // porta de controle separada
-  config2.stack_size = 4096;  // reduzido pra economizar RAM
+  config2.ctrl_port = 32769;  
+  config2.stack_size = 4096;  
 
   if (httpd_start(&alert_httpd, &config2) == ESP_OK) {
       httpd_uri_t alert_uri = {
@@ -144,14 +146,15 @@ void startCameraServer() {
   }
 }
 
+// ===================================================================
+// SETUP
+// ===================================================================
 void setup() {
-  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); // Desativa o detector de brownout
+  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); 
   
-  // Inicia a comunicação serial
   Serial.begin(115200);
   Serial.setDebugOutput(false);
   
-  // Configuração da câmera
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer = LEDC_TIMER_0;
@@ -178,18 +181,15 @@ void setup() {
   config.jpeg_quality = 40;
   config.fb_count = 2;
   
-  // Inicia a câmera
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
     Serial.printf("Camera init failed with error 0x%x", err);
     return;
   }
 
-  // Configura o pino do LED para o alerta
-  pinMode(ALERT_LED_PIN, OUTPUT);
-  digitalWrite(ALERT_LED_PIN, LOW);  // Inicializa o LED apagado
+  pinMode(BUZZER_PIN, OUTPUT);
+  digitalWrite(BUZZER_PIN, LOW);
 
-  // Conecta o ESP32 à rede Wi-Fi
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);

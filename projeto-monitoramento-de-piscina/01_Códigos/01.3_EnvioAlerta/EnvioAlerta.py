@@ -31,11 +31,9 @@ for chunk in stream.iter_content(chunk_size=1024):
         if len(faces) > 0 and time.time() - last_alert_time > 0.5:
             try:
                 r = requests.get(ESP32_ALERT, timeout=0.2)
-                print(">>> Alerta enviado!")
                 last_alert_time = time.time()
             except:
-                print("Falha alerta")
-
+                pass  
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (0,255,0), 2)
 
